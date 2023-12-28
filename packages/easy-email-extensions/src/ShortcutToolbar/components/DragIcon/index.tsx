@@ -13,11 +13,14 @@ export interface DragIconProps<T extends IBlockData> {
 export function DragIcon<T extends IBlockData = any>(props: DragIconProps<T>) {
   const block = BlockManager.getBlockByType(props.type);
   return (
-    <BlockAvatarWrapper type={props.type} payload={props.payload}>
+    <BlockAvatarWrapper
+      type={props.type}
+      payload={props.payload}
+    >
       <Button
         type='text'
         title={block?.name}
-        icon={(
+        icon={
           <IconFont
             iconName={getIconNameByBlockType(props.type)}
             style={{
@@ -27,7 +30,7 @@ export function DragIcon<T extends IBlockData = any>(props: DragIconProps<T>) {
               color: props.color,
             }}
           />
-        )}
+        }
       />
     </BlockAvatarWrapper>
   );

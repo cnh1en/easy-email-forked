@@ -63,12 +63,12 @@ export function ColorPicker(props: ColorPickerProps) {
         title={props.label}
         trigger='click'
         className='color-picker-popup'
-        content={(
+        content={
           <ColorPickerContent
             value={adapterColor}
             onChange={onInputChange}
           />
-        )}
+        }
         getPopupContainer={getPopupContainer}
         {...props}
       >

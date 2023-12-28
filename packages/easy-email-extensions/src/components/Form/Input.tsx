@@ -19,7 +19,7 @@ export function Input(props: InputProps) {
     (val: string) => {
       propsOnChange(val);
     },
-    [propsOnChange]
+    [propsOnChange],
   );
 
   const onKeyDown = useCallback(
@@ -43,19 +43,19 @@ export function Input(props: InputProps) {
             onChange(
               String(value).replace(/^(\d+)/, (_, match) => {
                 return (Number(match) + step).toString();
-              })
+              }),
             );
           }
         }
       }
     },
-    [onPropsKeyDown, quickchange, value, onChange]
+    [onPropsKeyDown, quickchange, value, onChange],
   );
 
   return (
     <ArcoInput
       {...{ ...props, quickchange: undefined }}
-      onChange={(value) => onChange(value)}
+      onChange={value => onChange(value)}
       onKeyDown={onKeyDown}
     />
   );

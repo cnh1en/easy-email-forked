@@ -35,6 +35,8 @@ export function InputWithUnit(props: InputWithUnitProps) {
     ...restProps
   } = props;
 
+  console.log({ value });
+
   return (
     <Input
       value={value}
