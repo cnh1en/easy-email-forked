@@ -7,7 +7,7 @@ import {
 export interface SelectProps
   extends Omit<PolarisSelectProps, 'options' | 'value' | 'onChange'> {
   options: { value: string; label: React.ReactNode }[];
-  onChange?: (val: string) => void;
+  onChange: (val: string) => void;
   value: string;
 }
 
@@ -37,6 +37,8 @@ export const Select = (props: SelectProps) => {
     <PolarisSelect
       {...props}
       value={props.value}
+      onChange={(selected, id) => props.onChange(selected)}
+      options={props.options as PolarisSelectProps['options']}
     />
   );
 };

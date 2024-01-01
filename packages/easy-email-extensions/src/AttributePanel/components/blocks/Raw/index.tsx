@@ -11,19 +11,20 @@ export function Raw() {
   return (
     <AttributesPanelWrapper
       style={{ padding: 20 }}
-      extra={(
+      extra={
+        // eslint-disable-next-line react/jsx-wrap-multilines
         <Tooltip content={t('Html mode')}>
           <Button
             onClick={() => setVisible(true)}
             icon={<IconFont iconName='icon-html' />}
           />
         </Tooltip>
-      )}
+      }
     >
       <TextAreaField
         label=''
         name={`${focusIdx}.data.value.content`}
-        rows={5}
+        multiline={5}
       />
       <HtmlEditor
         visible={visible}

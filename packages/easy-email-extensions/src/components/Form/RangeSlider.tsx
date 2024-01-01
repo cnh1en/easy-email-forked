@@ -5,6 +5,7 @@ import {
   RangeSlider as PolarisRangeSlider,
   RangeSliderProps as PolarisRangeSliderProps,
   TextField,
+  TextFieldProps,
 } from '@shopify/polaris';
 
 export type RangeSliderProps = Omit<PolarisRangeSliderProps, 'onChange'> & {
@@ -37,6 +38,8 @@ export const RangeSlider = ({
           <BlockStack align='center'>
             <PolarisRangeSlider
               {...props}
+              label=''
+              onChange={(value, id) => props.onChange(`${value}`)}
               output
             />
           </BlockStack>
@@ -48,10 +51,12 @@ export const RangeSlider = ({
           }}
         >
           <TextField
+            autoComplete='off'
+            label=''
             name={name}
             suffix={suffix}
-            type={type}
-            {...props}
+            type={type as TextFieldProps['type']}
+            onChange={value => props.onChange(value)}
           />
         </div>
       </InlineStack>
@@ -62,6 +67,7 @@ export const RangeSlider = ({
     <PolarisRangeSlider
       {...props}
       output
+      onChange={value => props.onChange(`${value}`)}
       suffix={suffix}
     />
   );

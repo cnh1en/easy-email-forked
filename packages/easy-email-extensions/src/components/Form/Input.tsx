@@ -1,31 +1,17 @@
-// import { Input as ArcoInput, InputProps as ArcoInputProps } from '@arco-design/web-react';
 import React, { useCallback } from 'react';
 import {
   TextField as PolarisTextField,
   TextFieldProps as PolarisTextFieldProps,
 } from '@shopify/polaris';
 
-export interface InputProps extends Omit<PolarisTextFieldProps, 'onChange'> {
+export interface InputProps
+  extends Omit<PolarisTextFieldProps, 'onChange' | 'autoComplete'> {
   quickchange?: boolean;
-  value: string;
+  autoComplete?: 'on' | 'off';
   onChange: (val: string) => void;
 }
 
 export function Input(props: InputProps) {
-  const {
-    // quickchange,
-    value = '',
-    // onKeyDown: onPropsKeyDown,
-    onChange: propsOnChange,
-  } = props;
-
-  const onChange = useCallback(
-    (val: string) => {
-      propsOnChange(val);
-    },
-    [propsOnChange],
-  );
-
   // const onKeyDown = useCallback(
   //   (ev: React.KeyboardEvent<HTMLInputElement>) => {
   //     if (onPropsKeyDown) {
@@ -60,7 +46,8 @@ export function Input(props: InputProps) {
     <PolarisTextField
       {...props}
       // {...{ ...props, quickchange: undefined }}
-      onChange={onChange}
+      onChange={(value, id) => props.onChange(value)}
+      autoComplete='off'
       // onKeyDown={onKeyDown}
     />
   );

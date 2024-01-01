@@ -1,8 +1,10 @@
 import {
   BlockStack,
   Box,
+  BoxProps,
   Checkbox,
   ColorPicker,
+  HSBColor,
   Icon,
   InlineStack,
   Popover,
@@ -16,6 +18,14 @@ import React, { useCallback, useMemo, useState } from 'react';
 import convert from 'color-convert';
 import { InfoMinor } from '@shopify/polaris-icons';
 import useToggle from '@extensions/hooks/useToggle';
+
+type WrapperBoxProps = Omit<BoxProps, 'onClick'> & {
+  style?: React.CSSProperties;
+  onClick?: (() => void) | undefined;
+};
+const WrapperBox = ({ children, ...props }: WrapperBoxProps) => {
+  return <Box {...props}>{children}</Box>;
+};
 
 interface NewColorPickerProps {
   value: string;
@@ -42,14 +52,14 @@ export default function NewColorPicker({
 }: NewColorPickerProps) {
   const { active: isPopoverOpen, toggle: togglePopover } = useToggle();
 
-  const [color, setColor] = useState(() => {
-    if (value === 'transparent') {
-      return value;
-    }
+  const [color, setColor] = useState<HSBColor>(() => {
+    // if (value === 'transparent') {
+    //   return value;
+    // }
     const hsl = convert.hex.hsl(value);
-    if (!hsl) {
-      return null;
-    }
+    // if (!hsl) {
+    //   return null;
+    // }
     return rgbToHsb(
       hslToRgb({
         hue: hsl[0],
@@ -67,18 +77,18 @@ export default function NewColorPicker({
     [id, onChange],
   );
 
-  const handleTransparentChecked = useCallback(
-    (isChecked: boolean) => {
-      const newValue = isChecked ? 'transparent' : '#000000';
-      setColor(newValue);
-      onChange(newValue, id);
-    },
-    [id, onChange],
-  );
+  // const handleTransparentChecked = useCallback(
+  //   (isChecked: boolean) => {
+  //     const newValue = isChecked ? 'transparent' : '#000000';
+  //     setColor(newValue);
+  //     onChange(newValue, id);
+  //   },
+  //   [id, onChange],
+  // );
 
   const activator = useMemo(
     () => (
-      <Box
+      <WrapperBox
         style={{
           cursor: disabled ? 'inherit' : 'pointer',
           marginTop: 'var(--p-space-050)',
@@ -92,7 +102,7 @@ export default function NewColorPicker({
           blockAlign='center'
           wrap={false}
         >
-          <Box
+          <WrapperBox
             style={{
               background: value || placeholder || '#AAA',
               width: '2rem',
@@ -105,12 +115,14 @@ export default function NewColorPicker({
             <Text
               variant='bodySm'
               fontWeight='semibold'
+              as='p'
             >
               {label}
             </Text>
             <Text
               variant='bodySm'
               alignment='start'
+              as='p'
             >
               {value}
             </Text>
@@ -126,6 +138,7 @@ export default function NewColorPicker({
                   />
                 </Box>
                 <Text
+                  as='p'
                   tone='critical'
                   variant='bodySm'
                 >
@@ -135,7 +148,7 @@ export default function NewColorPicker({
             )}
           </BlockStack>
         </InlineStack>
-      </Box>
+      </WrapperBox>
     ),
     [disabled, error, label, placeholder, togglePopover, value],
   );
@@ -154,10 +167,10 @@ export default function NewColorPicker({
               fullWidth
               onChange={handleChange}
               color={color}
-              disabled={disabled}
+              // disabled={disabled}
             />
             <InlineStack gap='200'>
-              <Box
+              <WrapperBox
                 style={{
                   background: value || placeholder || '#AAA',
                   width: '2rem',
@@ -175,16 +188,19 @@ export default function NewColorPicker({
                   disabled={disabled}
                   helpText={helpText}
                   placeholder={placeholder}
+                  type='text'
+                  label=''
+                  autoComplete='off'
                 />
               </Box>
             </InlineStack>
-            {isTransparent && (
+            {/* {isTransparent && (
               <Checkbox
                 label={t('display.transparent')}
                 onChange={handleTransparentChecked}
                 checked={color === 'transparent'}
               />
-            )}
+            )} */}
           </BlockStack>
         </Box>
       </Popover.Pane>

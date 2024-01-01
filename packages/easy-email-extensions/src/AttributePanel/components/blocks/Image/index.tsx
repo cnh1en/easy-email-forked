@@ -59,7 +59,7 @@ export function Image() {
           />
           {/* <Height /> */}
           <Padding showResetAll />
-          <Align align='space-between' />
+          <Align />
         </BlockStack>
       </Collapsible>
 

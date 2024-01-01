@@ -1,26 +1,21 @@
-import React from 'react';
-import { Padding } from '@extensions/AttributePanel/components/attributes/Padding';
-import { ContainerBackgroundColor } from '@extensions/AttributePanel/components/attributes/ContainerBackgroundColor';
-import { BorderWidth } from '@extensions/AttributePanel/components/attributes/BorderWidth';
-import { BorderStyle } from '@extensions/AttributePanel/components/attributes/BorderStyle';
-import { BorderColor } from '@extensions/AttributePanel/components/attributes/BorderColor';
-import { Width } from '@extensions/AttributePanel/components/attributes/Width';
 import { Align } from '@extensions/AttributePanel/components/attributes/Align';
-
 import { AttributesPanelWrapper } from '@extensions/AttributePanel/components/attributes/AttributesPanelWrapper';
-import { Collapse, Grid, Space } from '@arco-design/web-react';
-import { Stack } from 'easy-email-editor';
-import { ClassName } from '../../attributes/ClassName';
-import { CollapseWrapper } from '../../attributes/CollapseWrapper';
-import Collapsible from '../../UI/Collapsible';
+import { BorderColor } from '@extensions/AttributePanel/components/attributes/BorderColor';
+import { BorderStyle } from '@extensions/AttributePanel/components/attributes/BorderStyle';
+import { BorderWidth } from '@extensions/AttributePanel/components/attributes/BorderWidth';
+import { ContainerBackgroundColor } from '@extensions/AttributePanel/components/attributes/ContainerBackgroundColor';
+import { Padding } from '@extensions/AttributePanel/components/attributes/Padding';
+import { Width } from '@extensions/AttributePanel/components/attributes/Width';
 import { InlineGrid } from '@shopify/polaris';
+import React from 'react';
+import Collapsible from '../../UI/Collapsible';
 
 export function Divider() {
   return (
     <AttributesPanelWrapper>
       <Collapsible title='Dimension'>
         <InlineGrid columns={1}>
-          <Width unitOptions='percent' />
+          <Width suffix='%' />
           <Align />
           <Padding />
         </InlineGrid>

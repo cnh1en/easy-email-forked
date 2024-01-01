@@ -18,6 +18,7 @@ export interface RadioGroupProps extends Omit<PolarisRadioButtonProps, 'onChange
   vertical?: boolean;
   align?: 'space-between' | 'center';
   gap?: string;
+  children?: string | React.ReactNode;
 }
 
 export const RadioGroup = (props: RadioGroupProps) => {
@@ -51,7 +52,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
     <InlineStack
       blockAlign='center'
       align={props.align}
-      gap={props.gap || '500'}
+      gap='500'
     >
       {optionsMarkup}
     </InlineStack>

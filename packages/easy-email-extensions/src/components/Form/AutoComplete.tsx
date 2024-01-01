@@ -7,7 +7,10 @@ import {
 import { isString } from 'lodash';
 
 export interface AutoCompleteProps
-  extends Omit<AutocompleteProps, 'onChange' | 'options'> {
+  extends Omit<
+    AutocompleteProps,
+    'onChange' | 'options' | 'onSelect' | 'selected' | 'textField'
+  > {
   // quickchange?: boolean;
   value: string;
   options: { value: any; label: any }[];

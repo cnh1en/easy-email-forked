@@ -45,8 +45,8 @@ export function Carousel() {
             <InputWithUnitField
               label={t('Thumbnail width')}
               name={`${focusIdx}.attributes.tb-width`}
+              autoComplete='off'
               quickchange
-              inline
             />
 
             <RadioGroupField
@@ -55,7 +55,7 @@ export function Carousel() {
               options={options}
               inline
             />
-            <Align inline />
+            <Align />
           </Space>
         </Collapse.Item>
         <Collapse.Item

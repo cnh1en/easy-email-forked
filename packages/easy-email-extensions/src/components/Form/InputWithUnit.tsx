@@ -1,45 +1,21 @@
-import { InputProps as ArcoInputProps } from '@arco-design/web-react';
 import React from 'react';
 import { Input } from './Input';
+import { TextFieldProps } from '@shopify/polaris';
 
-export interface InputWithUnitProps extends Omit<ArcoInputProps, 'onChange'> {
+export interface InputWithUnitProps
+  extends Omit<TextFieldProps, 'onChange' | 'autoComplete'> {
   value: string;
   onChange: (val: string) => void;
-  unitOptions?: Array<{ value: string; label: string }> | 'default' | 'percent';
   quickchange?: boolean;
+  autoComplete?: 'off' | 'on';
 }
 
-const defaultUnitOptions = [
-  {
-    value: 'px',
-    label: 'px',
-  },
-];
-
-const percentUnitOptions = [
-  {
-    value: 'px',
-    label: 'px',
-  },
-  {
-    value: '%',
-    label: '%',
-  },
-];
-
 export function InputWithUnit(props: InputWithUnitProps) {
-  const {
-    value = '',
-    onKeyDown: onPropsKeyDown,
-    unitOptions: propsUnitOptions,
-    ...restProps
-  } = props;
-
   return (
     <Input
-      value={value}
-      {...restProps}
-      quickchange
+      {...props}
+      autoComplete='off'
+      // quickchange
     />
   );
 }
