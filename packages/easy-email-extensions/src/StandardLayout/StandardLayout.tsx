@@ -98,6 +98,8 @@ export const StandardLayout: React.FC<ExtensionProps> = props => {
 
   const { setFocusIdx } = useFocusIdx();
 
+  console.log('Test');
+
   useEffect(() => {
     if (!compact) {
       setFocusIdx('');

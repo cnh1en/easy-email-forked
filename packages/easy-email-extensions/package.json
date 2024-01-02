@@ -2,7 +2,7 @@
   "name": "polaris-email-extensions",
   "license": "MIT",
   "description": "Email editor",
-  "version": "0.0.9",
+  "version": "0.10.0",
   "author": "cnhien12",
   "repository": {
     "type": "git",
