@@ -18,9 +18,9 @@ export type RangeSliderProps = Omit<PolarisRangeSliderProps, 'onChange'> & {
 export const RangeSlider = ({
   name,
   suffix,
-  type,
+  type = 'text',
   output,
-  showTextField = true,
+  showTextField = false,
   ...props
 }: RangeSliderProps) => {
   if (showTextField) {
@@ -39,7 +39,7 @@ export const RangeSlider = ({
             <PolarisRangeSlider
               {...props}
               label=''
-              onChange={(value, id) => props.onChange(`${value}`)}
+              onChange={value => props.onChange(`${value}`)}
               output
             />
           </BlockStack>
@@ -56,7 +56,10 @@ export const RangeSlider = ({
             name={name}
             suffix={suffix}
             type={type as TextFieldProps['type']}
-            onChange={value => props.onChange(value)}
+            onChange={value => {
+              props.onChange(value);
+            }}
+            value={`${props.value}`}
           />
         </div>
       </InlineStack>

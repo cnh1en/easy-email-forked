@@ -20,7 +20,7 @@ const Collapsible = ({ title, children }: CollapsibleProps) => {
   const [value, toggle] = useToggle(true);
 
   return (
-    <BlockStack gap='300'>
+    <BlockStack gap='400'>
       <Bleed marginInline='500'>{/* <Divider /> */}</Bleed>
       <BlockStack gap='300'>
         <InlineStack align='space-between'>
@@ -42,7 +42,7 @@ const Collapsible = ({ title, children }: CollapsibleProps) => {
           transition={{ duration: '200ms', timingFunction: 'ease-in-out' }}
           expandOnPrint
         >
-          {children}
+          <BlockStack gap='300'>{children}</BlockStack>
         </PolarisCollapsible>
       </BlockStack>
       <Bleed marginInline='500'>

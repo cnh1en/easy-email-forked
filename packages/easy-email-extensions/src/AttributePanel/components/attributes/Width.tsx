@@ -8,11 +8,13 @@ import { pixelAdapter } from '../adapter';
 import { percentAdapter } from '../adapter/percent.adapter';
 
 export function Width({
-  suffix,
+  suffix = 'px',
   min = 100,
   max = 800,
+  showTextField = true,
 }: {
   config?: UseFieldConfig<any>;
+  showTextField?: boolean;
 } & Partial<RangeSliderProps>) {
   const { focusIdx } = useFocusIdx();
   const { focusBlock, values } = useBlock();
@@ -51,7 +53,7 @@ export function Width({
       min={min}
       max={max}
       name={`${focusIdx}.attributes.width`}
-      showTextField
+      showTextField={showTextField}
     />
   );
 }

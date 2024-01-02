@@ -42,7 +42,6 @@ export function Border() {
           name={`${focusIdx}.attributes.border-radius`}
           suffix='px'
           config={pixelAdapter}
-          showTextField
         />
       </InlineGrid>
     );

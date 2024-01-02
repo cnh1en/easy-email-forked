@@ -98,6 +98,12 @@ const defaultCategories: ExtensionProps['categories'] = [
       {
         type: AdvancedType.WRAPPER,
       },
+      {
+        type: AdvancedType.NAVBAR,
+      },
+      {
+        type: AdvancedType.COLUMN,
+      },
     ],
   },
   {

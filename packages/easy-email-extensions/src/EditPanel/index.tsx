@@ -1,14 +1,13 @@
-import { Layout, Tabs } from '@arco-design/web-react';
-import { useEditorProps } from 'easy-email-editor';
-import React from 'react';
-import { Blocks } from './Blocks';
-import { BlockLayer } from '@extensions/BlockLayer';
+import { Layout } from '@arco-design/web-react';
 import { FullHeightOverlayScrollbars } from '@extensions/components/FullHeightOverlayScrollbars';
-import styles from './index.module.scss';
-import { ConfigurationDrawer } from './ConfigurationDrawer';
 import { useExtensionProps } from '@extensions/components/Providers/ExtensionProvider';
-
-const TabPane = Tabs.TabPane;
+import { useEditorProps } from 'easy-email-editor';
+import React, { useState } from 'react';
+import { Blocks } from './Blocks';
+import { ConfigurationDrawer } from './ConfigurationDrawer';
+import styles from './index.module.scss';
+import { Tabs } from '@shopify/polaris';
+import { BlockLayer } from '@extensions/BlockLayer';
 
 export function EditPanel({
   showSourceCode,
@@ -22,6 +21,8 @@ export function EditPanel({
   const { height } = useEditorProps();
   const { compact = true } = useExtensionProps();
 
+  const [selectedTab, setSelectedTab] = useState(0);
+
   return (
     <Layout.Sider
       className={styles.blocksPanel}
@@ -34,33 +35,32 @@ export function EditPanel({
       width={360}
     >
       <Tabs
-        defaultActiveTab='2'
-        style={{ width: '100%', padding: 0 }}
-        renderTabHeader={(_, DefaultHeader) => (
-          <div className={styles.largeTabsHeader}>
-            <DefaultHeader />
-          </div>
-        )}
+        selected={selectedTab}
+        fitted
+        tabs={[
+          {
+            content: 'Block',
+            id: 'block',
+            onAction: () => setSelectedTab(0),
+          },
+          {
+            content: 'Layer',
+            id: 'layer',
+            onAction: () => setSelectedTab(1),
+          },
+        ]}
       >
-        <TabPane
-          key='2'
-          title={t('Block')}
-        >
-          <FullHeightOverlayScrollbars height={`calc(${height} - 60px)`}>
+        {selectedTab === 0 ? (
+          <FullHeightOverlayScrollbars height={height}>
             <Blocks />
           </FullHeightOverlayScrollbars>
-        </TabPane>
-
-        <TabPane
-          key='1'
-          title={t('Layer')}
-        >
+        ) : (
           <FullHeightOverlayScrollbars height={`calc(${height} - 60px)`}>
             <div style={{ padding: 20 }}>
               <BlockLayer />
             </div>
           </FullHeightOverlayScrollbars>
-        </TabPane>
+        )}
       </Tabs>
       {!compact && (
         <ConfigurationDrawer

@@ -115,57 +115,53 @@ export function Padding(props: PaddingProps = {}) {
                   </Tooltip>
                 )}
               </InlineStack>
-              <InlineGrid
-                columns={2}
-                gap='300'
-              >
-                <RangeSliderField
-                  label='Top'
-                  name='top'
-                  autoComplete='off'
-                  config={pixelAdapter}
-                  suffix='px'
-                  min={0}
-                  max={200}
-                  showTextField={false}
-                />
 
-                <RangeSliderField
-                  label='Left'
-                  name='left'
-                  autoComplete='off'
-                  config={pixelAdapter}
-                  suffix='px'
-                  min={0}
-                  max={200}
-                  showTextField={false}
-                  output
-                />
+              <RangeSliderField
+                label='Top'
+                name='top'
+                autoComplete='off'
+                config={pixelAdapter}
+                suffix='px'
+                min={0}
+                max={200}
+                showTextField={false}
+              />
 
-                <RangeSliderField
-                  label='Bottom'
-                  name='bottom'
-                  config={pixelAdapter}
-                  autoComplete='off'
-                  suffix='px'
-                  min={0}
-                  max={200}
-                  showTextField={false}
-                  output
-                />
+              <RangeSliderField
+                label='Left'
+                name='left'
+                autoComplete='off'
+                config={pixelAdapter}
+                suffix='px'
+                min={0}
+                max={200}
+                showTextField={false}
+                output
+              />
 
-                <RangeSliderField
-                  label='Right'
-                  name='right'
-                  autoComplete='off'
-                  config={pixelAdapter}
-                  suffix='px'
-                  min={0}
-                  max={200}
-                  showTextField={false}
-                  output
-                />
-              </InlineGrid>
+              <RangeSliderField
+                label='Bottom'
+                name='bottom'
+                config={pixelAdapter}
+                autoComplete='off'
+                suffix='px'
+                min={0}
+                max={200}
+                showTextField={false}
+                output
+              />
+
+              <RangeSliderField
+                label='Right'
+                name='right'
+                autoComplete='off'
+                config={pixelAdapter}
+                suffix='px'
+                min={0}
+                max={200}
+                showTextField={false}
+                output
+              />
             </BlockStack>
             <PaddingChangeWrapper onChange={onChangePadding} />
           </>

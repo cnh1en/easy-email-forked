@@ -12,8 +12,8 @@ export function FontSize() {
       name={`${focusIdx}.attributes.font-size`}
       config={pixelAdapter}
       autoComplete='off'
+      suffix='px'
       output
-      showTextField
     />
   );
 }

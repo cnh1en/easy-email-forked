@@ -1,5 +1,5 @@
+import { useFocusIdx } from 'easy-email-editor';
 import React, { useMemo } from 'react';
-import { useFocusIdx, Stack } from 'easy-email-editor';
 import { SelectField } from '../../../components/Form';
 
 const options = [
@@ -9,12 +9,12 @@ const options = [
       return t('top');
     },
   },
-  {
-    value: 'middle',
-    get label() {
-      return t('middle');
-    },
-  },
+  // {
+  //   value: 'middle',
+  //   get label() {
+  //     return t('middle');
+  //   },
+  // },
   {
     value: 'bottom',
     get label() {
@@ -32,14 +32,11 @@ export function VerticalAlign({
 
   return useMemo(() => {
     return (
-      <Stack>
-        <SelectField
-          style={{ width: 120 }}
-          label={t('Vertical align')}
-          name={`${focusIdx}.attributes.${attributeName}`}
-          options={options}
-        />
-      </Stack>
+      <SelectField
+        label={t('Vertical align')}
+        name={`${focusIdx}.attributes.${attributeName}`}
+        options={options}
+      />
     );
   }, [attributeName, focusIdx]);
 }

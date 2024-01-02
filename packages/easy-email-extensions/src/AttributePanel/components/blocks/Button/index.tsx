@@ -42,7 +42,6 @@ export function Button() {
           <Link />
         </Space>
       </Collapsible>
-
       <Collapsible title='Dimension'>
         <BlockStack gap='300'>
           <Width />
@@ -58,7 +57,6 @@ export function Button() {
           />
         </BlockStack>
       </Collapsible>
-
       <Collapsible title='Color'>
         <BlockStack gap='300'>
           <InlineGrid
@@ -71,7 +69,6 @@ export function Button() {
           </InlineGrid>
         </BlockStack>
       </Collapsible>
-
       <Collapsible title='Typography'>
         <BlockStack gap='300'>
           <FontFamily />
@@ -91,7 +88,6 @@ export function Button() {
           <FontStyle gap='1000' />
         </BlockStack>
       </Collapsible>
-
       <Collapsible title='Border'>
         <Border />
       </Collapsible>

@@ -53,10 +53,7 @@ export function Image() {
 
       <Collapsible title='Dimension'>
         <BlockStack gap='200'>
-          <Width
-            config={pixelAdapter}
-            suffix='px'
-          />
+          <Width suffix='px' />
           {/* <Height /> */}
           <Padding showResetAll />
           <Align />
