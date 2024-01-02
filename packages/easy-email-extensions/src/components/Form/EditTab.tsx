@@ -1,14 +1,13 @@
 import { Tabs, TabsProps } from '@arco-design/web-react';
 import { classnames } from '@extensions/utils/classnames';
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   Box,
-  LegacyCard,
   Tabs as PolarisTabs,
-  TabsProps as PolarisTabsProp,
+  TabsProps as PolarisTabsProps,
 } from '@shopify/polaris';
-import styles from './index.module.scss';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import enhancer from './enhancer';
+import styles from './index.module.scss';
 
 const { TabPane } = Tabs;
 
@@ -77,7 +76,7 @@ type NavLinkProps = {
 };
 
 type AppTabsProps = {
-  renderItem: (item: NavLinkProps, index: number) => React.ReactNode;
+  renderItem: (item: any, index: number) => React.ReactNode;
   value: NavLinkProps[];
   additionItem: NavLinkProps;
   onChange: (values: NavLinkProps[]) => any;
@@ -105,26 +104,23 @@ export const AppTabs = <T extends any>({
 
   const tabs = useMemo(() => {
     return itemStrings.map((item, index) => ({
+      id: `${item}-${index}`,
       content: item,
-      index,
+
       onAction: () => {
         setSelected(index);
       },
-      id: `${item}-${index}`,
-
-      actions:
-        index === 0
-          ? []
-          : [
-              {
-                type: 'delete',
-                onPrimaryAction: async () => {
-                  await sleep(1);
-                  deleteView(index);
-                  return true;
-                },
-              },
-            ],
+      actions: [
+        {
+          type: 'delete' as const,
+          onPrimaryAction: async () => {
+            await sleep(1);
+            deleteView(index);
+            return true;
+          },
+          onAction: () => {},
+        },
+      ],
     }));
   }, [deleteView, itemStrings]);
 

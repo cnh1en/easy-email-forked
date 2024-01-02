@@ -1,15 +1,10 @@
-import { Grid, Space } from '@arco-design/web-react';
 import { IconLink } from '@arco-design/web-react/icon';
 import { Align } from '@extensions/AttributePanel/components/attributes/Align';
 import { AttributesPanelWrapper } from '@extensions/AttributePanel/components/attributes/AttributesPanelWrapper';
 import { NavbarLinkPadding } from '@extensions/AttributePanel/components/attributes/NavbarLinkPadding';
-import {
-  ColorPickerField,
-  EditTabField,
-  SelectField,
-  TextField,
-} from '@extensions/components/Form';
+import { ColorPickerField, SelectField, TextField } from '@extensions/components/Form';
 import { AppTabsEnhancer } from '@extensions/components/Form/EditTab';
+import { BlockStack } from '@shopify/polaris';
 import { INavbar } from 'easy-email-core';
 import { Stack, useFocusIdx } from 'easy-email-editor';
 import React from 'react';
@@ -24,7 +19,6 @@ import {
   TextDecoration,
   TextTransform,
 } from '../../attributes';
-import { BlockStack } from '@shopify/polaris';
 
 export const Navbar = () => {
   const { focusIdx } = useFocusIdx();
