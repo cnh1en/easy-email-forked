@@ -1,3 +1,4 @@
+import '@shopify/polaris/build/esm/styles.css';
 import './index.scss';
 
 export * from './BlockLayer';
