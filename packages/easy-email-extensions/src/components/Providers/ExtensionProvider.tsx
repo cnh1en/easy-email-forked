@@ -1,6 +1,7 @@
 import { BlockLayerProps } from '@extensions/BlockLayer';
 import { isEqual, omit } from 'lodash';
 import React, { useContext, useMemo, useRef } from 'react';
+import PolarisProvider from './PolarisProvider';
 
 export interface ExtensionProps extends BlockLayerProps {
   children?: React.ReactNode | React.ReactElement;
@@ -61,9 +62,11 @@ export const ExtensionProvider: React.FC<ExtensionProps> = props => {
   }, [value, valueRef]);
 
   return (
-    <ExtensionContext.Provider value={cacheValue}>
-      {props.children}
-    </ExtensionContext.Provider>
+    <PolarisProvider>
+      <ExtensionContext.Provider value={cacheValue}>
+        {props.children}
+      </ExtensionContext.Provider>
+    </PolarisProvider>
   );
 };
 
