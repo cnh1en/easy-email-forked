@@ -1,8 +1,8 @@
 import { IconEye, IconEyeInvisible } from '@arco-design/web-react/icon';
-import React, { useCallback } from 'react';
-import { Stack, TextStyle, useBlock } from 'easy-email-editor';
-import { BasicType, BlockManager } from 'easy-email-core';
 import { Box } from '@shopify/polaris';
+import { BasicType, BlockManager } from 'easy-email-core';
+import { useBlock } from 'easy-email-editor';
+import React, { useCallback } from 'react';
 
 export interface AttributesPanelWrapper {
   style?: React.CSSProperties;

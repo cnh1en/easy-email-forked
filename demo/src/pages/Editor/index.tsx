@@ -626,7 +626,7 @@ export default function Editor() {
                 <StandardLayout
                   compact={!smallScene}
                   categories={defaultCategories}
-                  showSourceCode
+                  showSourceCode={false}
                 >
                   <EmailEditor />
                 </StandardLayout>
