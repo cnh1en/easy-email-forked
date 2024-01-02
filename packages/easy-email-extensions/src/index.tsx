@@ -1,4 +1,3 @@
-import '@arco-themes/react-easy-email-theme/css/arco.css';
 import '@shopify/polaris/build/esm/styles.css';
 import './index.scss';
 

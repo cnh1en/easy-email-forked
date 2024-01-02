@@ -12,6 +12,7 @@ import {
   ExtensionProvider,
 } from '@extensions/components/Providers/ExtensionProvider';
 import { AdvancedType } from 'easy-email-core';
+import '@arco-themes/react-easy-email-theme/css/arco.css';
 
 const defaultCategories: ExtensionProps['categories'] = [
   {
