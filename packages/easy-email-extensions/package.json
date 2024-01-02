@@ -2,7 +2,7 @@
   "name": "polaris-email-extensions",
   "license": "MIT",
   "description": "Email editor",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "author": "cnhien12",
   "repository": {
     "type": "git",
@@ -77,6 +77,7 @@
   },
   "dependencies": {
     "@arco-design/web-react": "^2.36.1",
+    "@shopify/polaris": "^12.6.0",
     "@shopify/polaris-icons": "^7.13.0",
     "codemirror": "^5.63.3",
     "color": "^4.2.3",
