@@ -13,8 +13,9 @@ import { useEditorProps } from '@/hooks/useEditorProps';
 import './index.scss';
 import '@/assets/font/iconfont.css';
 import { EventManager, EventType } from '@/utils/EventManager';
-import { Icon } from '@shopify/polaris';
+import { Icon, AppProvider } from '@shopify/polaris';
 import { MobileMajor, DesktopMajor, DragDropMajor } from '@shopify/polaris-icons';
+import translations from '@shopify/polaris/locales/en.json';
 
 (window as any).global = window; // react-codemirror
 
@@ -39,49 +40,51 @@ export const EmailEditor = () => {
 
   return useMemo(
     () => (
-      <div
-        id={EASY_EMAIL_EDITOR_ID}
-        style={{
-          display: 'flex',
-          flex: '1',
-          overflow: 'hidden',
-          justifyContent: 'center',
-          minWidth: 640,
-          height: containerHeight,
-        }}
-      >
-        <Tabs
-          activeTab={activeTab}
-          onBeforeChange={onBeforeChangeTab}
-          onChange={onChangeTab}
-          style={{ height: '100%', width: '100%' }}
-          tabBarExtraContent={<ToolsPanel />}
-          variant='segmented'
+      <AppProvider i18n={translations}>
+        <div
+          id={EASY_EMAIL_EDITOR_ID}
+          style={{
+            display: 'flex',
+            flex: '1',
+            overflow: 'hidden',
+            justifyContent: 'center',
+            minWidth: 640,
+            height: containerHeight,
+          }}
         >
-          <TabPane
-            style={{ height: 'calc(100% - 50px)' }}
-            tab={<Icon source={DragDropMajor} />}
-            key={ActiveTabKeys.EDIT}
+          <Tabs
+            activeTab={activeTab}
+            onBeforeChange={onBeforeChangeTab}
+            onChange={onChangeTab}
+            style={{ height: '100%', width: '100%' }}
+            tabBarExtraContent={<ToolsPanel />}
+            variant='segmented'
           >
-            <EditEmailPreview />
-          </TabPane>
-          <TabPane
-            style={{ height: 'calc(100% - 50px)' }}
-            tab={<Icon source={DesktopMajor} />}
-            key={ActiveTabKeys.PC}
-          >
-            <DesktopEmailPreview />
-          </TabPane>
-          <TabPane
-            style={{ height: 'calc(100% - 50px)' }}
-            tab={<Icon source={MobileMajor} />}
-            key={ActiveTabKeys.MOBILE}
-          >
-            <MobileEmailPreview />
-          </TabPane>
-        </Tabs>
-        <>{fixedContainer}</>
-      </div>
+            <TabPane
+              style={{ height: 'calc(100% - 50px)' }}
+              tab={<Icon source={DragDropMajor} />}
+              key={ActiveTabKeys.EDIT}
+            >
+              <EditEmailPreview />
+            </TabPane>
+            <TabPane
+              style={{ height: 'calc(100% - 50px)' }}
+              tab={<Icon source={DesktopMajor} />}
+              key={ActiveTabKeys.PC}
+            >
+              <DesktopEmailPreview />
+            </TabPane>
+            <TabPane
+              style={{ height: 'calc(100% - 50px)' }}
+              tab={<Icon source={MobileMajor} />}
+              key={ActiveTabKeys.MOBILE}
+            >
+              <MobileEmailPreview />
+            </TabPane>
+          </Tabs>
+          <>{fixedContainer}</>
+        </div>
+      </AppProvider>
     ),
     [activeTab, containerHeight, fixedContainer, onBeforeChangeTab, onChangeTab],
   );
