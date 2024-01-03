@@ -1,3 +1,5 @@
+import '@shopify/polaris/build/esm/styles.css';
+
 // export components
 export * from './components/Provider/EmailEditorProvider';
 

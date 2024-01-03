@@ -1,5 +1,4 @@
 import React, { useMemo, useCallback } from 'react';
-import { Stack } from '../UI/Stack';
 import { ToolsPanel } from './components/ToolsPanel';
 import { createPortal } from 'react-dom';
 import { EASY_EMAIL_EDITOR_ID, FIXED_CONTAINER_ID } from '@/constants';
