@@ -1,9 +1,4 @@
 /* eslint-disable react/jsx-wrap-multilines */
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import template from '@demo/store/template';
-import { useAppSelector } from '@demo/hooks/useAppSelector';
-import { useLoading } from '@demo/hooks/useLoading';
 import {
   Button,
   ConfigProvider,
@@ -16,31 +11,34 @@ import {
   PageHeader,
   Select,
 } from '@arco-design/web-react';
-import { useQuery } from '@demo/hooks/useQuery';
-import { useHistory } from 'react-router-dom';
-import { cloneDeep, set, isEqual } from 'lodash';
-import { Loading } from '@demo/components/loading';
-import mjml from 'mjml-browser';
-import { copy } from '@demo/utils/clipboard';
-import { useEmailModal } from './components/useEmailModal';
-import services from '@demo/services';
 import { IconMoonFill, IconSunFill } from '@arco-design/web-react/icon';
-import { Liquid } from 'liquidjs';
-import { saveAs } from 'file-saver';
+import { Loading } from '@demo/components/loading';
+import { useAppSelector } from '@demo/hooks/useAppSelector';
+import { useLoading } from '@demo/hooks/useLoading';
+import { useQuery } from '@demo/hooks/useQuery';
+import services from '@demo/services';
+import template from '@demo/store/template';
 import {
-  BlockAvatarWrapper,
   EmailEditor,
   EmailEditorProvider,
   EmailEditorProviderProps,
   IEmailTemplate,
 } from 'easy-email-editor';
+import { saveAs } from 'file-saver';
+import { Liquid } from 'liquidjs';
+import { cloneDeep, isEqual, set } from 'lodash';
+import mjml from 'mjml-browser';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { useEmailModal } from './components/useEmailModal';
 
 import { Stack } from '@demo/components/Stack';
 import { pushEvent } from '@demo/utils/pushEvent';
-import { FormApi } from 'final-form';
 import { UserStorage } from '@demo/utils/user-storage';
+import { FormApi } from 'final-form';
 
-import { useCollection } from './components/useCollection';
+import { AutoSaveAndRestoreEmail } from '@demo/components/AutoSaveAndRestoreEmail';
 import { AdvancedType, BasicType, IBlockData, JsonToMjml } from 'easy-email-core';
 import {
   BlockMarketManager,
@@ -48,25 +46,24 @@ import {
   MjmlToJson,
   StandardLayout,
 } from 'easy-email-extensions';
-import { AutoSaveAndRestoreEmail } from '@demo/components/AutoSaveAndRestoreEmail';
+import { useCollection } from './components/useCollection';
 
 // Register external blocks
 import './components/CustomBlocks';
 
+import greenTheme from '@arco-themes/react-easy-email-theme-green/css/arco.css?inline';
+import purpleTheme from '@arco-themes/react-easy-email-theme-purple/css/arco.css?inline';
+import blueTheme from '@arco-themes/react-easy-email-theme/css/arco.css?inline';
 import 'easy-email-editor/lib/style.css';
 import 'easy-email-extensions/lib/style.css';
-import blueTheme from '@arco-themes/react-easy-email-theme/css/arco.css?inline';
-import purpleTheme from '@arco-themes/react-easy-email-theme-purple/css/arco.css?inline';
-import greenTheme from '@arco-themes/react-easy-email-theme-green/css/arco.css?inline';
-import { testMergeTags } from './testMergeTags';
 import { useMergeTagsModal } from './components/useMergeTagsModal';
+import { testMergeTags } from './testMergeTags';
 
-import { useWindowSize } from 'react-use';
-import { CustomBlocksType } from './components/CustomBlocks/constants';
-import localesData from 'easy-email-localization/locales/locales.json';
+import enUS from '@arco-design/web-react/es/locale/en-US';
 import { Uploader } from '@demo/utils/Uploader';
 import axios from 'axios';
-import enUS from '@arco-design/web-react/es/locale/en-US';
+import localesData from 'easy-email-localization/locales/locales.json';
+import { useWindowSize } from 'react-use';
 
 const defaultCategories: ExtensionProps['categories'] = [
   {

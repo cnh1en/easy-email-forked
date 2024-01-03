@@ -1,9 +1,9 @@
 {
-  "name": "easy-email-editor",
+  "name": "polaris-email-editor",
   "license": "MIT",
-  "description": "Email editor",
-  "version": "4.12.2",
-  "author": "m-Ryan",
+  "description": "Polaris email editor",
+  "version": "0.0.1",
+  "author": "cnhien12",
   "repository": {
     "type": "git",
     "url": "git@github.com:m-Ryan/easy-email.git"
@@ -20,6 +20,7 @@
     "dev": "vite",
     "typings": "tsc --declaration --emitDeclarationOnly --project tsconfig.lib.json && tsc-alias -p tsconfig.alias.json",
     "build": "rimraf lib && npm run typings && vite build --config vite.config.ts",
+    "build:no-type": "rimraf lib && vite build --config vite.config.ts",
     "format": "eslint --fix  --ext .tsx,.ts,.tsx src/"
   },
   "husky": {
@@ -33,6 +34,7 @@
     ]
   },
   "dependencies": {
+    "@shopify/polaris": "^12.6.0",
     "final-form": "^4.20.4",
     "final-form-arrays": "^3.0.2",
     "final-form-set-field-touched": "^1.0.1",
@@ -46,8 +48,8 @@
     "@types/is-hotkey": "^0.1.7",
     "@types/lodash": "^4.14.178",
     "@types/node": "^16.11.7",
-    "@types/react-dom": "^18.2.3",
     "@types/react": "18.2.25",
+    "@types/react-dom": "^18.2.3",
     "@typescript-eslint/eslint-plugin": "^5.22.0",
     "@typescript-eslint/parser": "^4.28.3",
     "eslint": "^7.31.0",

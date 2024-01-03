@@ -64,6 +64,7 @@
     "liquidjs": "^9.40.0",
     "mjml-browser": "^4.10.4",
     "mustache": "^4.2.0",
+    "polaris-email-extensions": "^0.1.4",
     "qs": "^6.10.1",
     "react": "18.2.0",
     "react-color": "^2.19.3",
